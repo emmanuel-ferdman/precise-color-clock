@@ -1,0 +1,39 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependency directories
+node_modules
+dist
+dist-ssr
+*.local
+
+# Environment files
+.env
+.env.local
+.env.production
+.env.development
+
+# Build outputs
+build/
+out/
+
+# Cache directories
+.cache/
+.parcel-cache/
+
+# TypeScript
+*.tsbuildinfo
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
+
+# OS generated files
+Thumbs.db
+
+# Temporary files
+.tmp/
+temp/
