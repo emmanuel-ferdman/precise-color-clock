@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { RiFullscreenLine, RiEyeLine, RiEyeOffLine } from "react-icons/ri";
 
+import { AboutDialog } from "@/components";
 import { Button } from "@/components/ui/Button";
 import {
   DropdownMenu,
@@ -76,6 +77,9 @@ function PreciseColorClockPage() {
         >
           <RiFullscreenLine className="h-4 w-4" />
         </Button>
+
+        {/* About Dialog */}
+        <AboutDialog color={color} colorMode={colorMode} />
       </div>
 
       {/* Main content with time and color display */}
