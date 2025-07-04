@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { RiEyeLine, RiEyeOffLine } from "react-icons/ri";
+import { RiFullscreenLine, RiEyeLine, RiEyeOffLine } from "react-icons/ri";
 
 import { Button } from "@/components/ui/Button";
 import {
@@ -13,6 +13,7 @@ import { COLOR_MODES } from "@/config/color-modes";
 import { useColorClock } from "@/hooks/use-color-clock";
 import { useInactivityTimer } from "@/hooks/use-inactivity-timer";
 import { ColorMode } from "@/types/color";
+import { toggleFullscreen } from "@/utils/browser-utils";
 import { isColorLight } from "@/utils/color-utils";
 
 function PreciseColorClockPage() {
@@ -65,6 +66,16 @@ function PreciseColorClockPage() {
             ))}
           </DropdownMenuContent>
         </DropdownMenu>
+
+        {/* Fullscreen toggle button */}
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={toggleFullscreen}
+          aria-label="Enter fullscreen"
+        >
+          <RiFullscreenLine className="h-4 w-4" />
+        </Button>
       </div>
 
       {/* Main content with time and color display */}
