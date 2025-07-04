@@ -1,9 +1,14 @@
 import { useState } from "react";
 
+import { RiEyeLine, RiEyeOffLine } from "react-icons/ri";
+
+import { Button } from "@/components/ui/Button";
 import { useColorClock } from "@/hooks/use-color-clock";
+import { useInactivityTimer } from "@/hooks/use-inactivity-timer";
 import { isColorLight } from "@/utils/color-utils";
 
 function PreciseColorClockPage() {
+  const [showControls, setShowControls] = useInactivityTimer();
   const [showTime, setShowTime] = useState(true);
   const { time, color, colorMode, setColorMode } = useColorClock();
   const isLightBg = isColorLight(color);
@@ -13,6 +18,23 @@ function PreciseColorClockPage() {
       className="min-h-screen flex flex-col items-center justify-center relative transition-colors duration-700"
       style={{ backgroundColor: color }}
     >
+      <div
+        className={`fixed top-4 right-4 flex gap-2 transition-opacity duration-300 ${
+          showControls ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        {/* Toggle show time button */}
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={() => setShowTime(!showTime)}
+          className="font-mono"
+          aria-label={showTime ? "Hide time" : "Show time"}
+        >
+          {showTime ? <RiEyeLine className="h-4 w-4" /> : <RiEyeOffLine className="h-4 w-4" />}
+        </Button>
+      </div>
+
       {/* Main content with time and color display */}
       <div className="text-white space-y-4">
         <div className="h-[130px] sm:h-[160px] md:h-[200px] lg:h-[240px] xl:h-[280px] relative flex items-center justify-center">
