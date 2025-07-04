@@ -1,0 +1,16 @@
+# Build outputs
+dist
+dist-ssr
+build/
+out/
+
+# Dependencies
+node_modules
+bun.lock
+
+# Generated files
+coverage
+*.tsbuildinfo
+
+# Git
+.git
