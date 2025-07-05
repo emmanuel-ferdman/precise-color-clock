@@ -42,7 +42,7 @@ function PreciseColorClockPage() {
       className="min-h-screen flex flex-col items-center justify-center relative transition-colors duration-700"
       style={{ backgroundColor: color }}
     >
-      {/* Set of controlers */}
+      {/* Set of controllers */}
       <div
         className={`fixed top-4 right-4 flex gap-2 transition-opacity duration-300 ${
           showControls || dropdownOpen ? "opacity-100" : "opacity-0"
