@@ -2,7 +2,7 @@
   "name": "precise-color-clock",
   "version": "0.1.0",
   "private": true,
-  "description": "Interactive color clock transforms time into precise color representations",
+  "description": "An interactive color clock that transforms time into HEX, RGB, HSL and other colors models",
   "homepage": "https://github.com/emmanuel-ferdman/precise-color-clock#readme",
   "bugs": {
     "url": "https://github.com/emmanuel-ferdman/precise-color-clock/issues"
