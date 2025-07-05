@@ -1,5 +1,6 @@
 import { RiInformationLine, RiShareLine } from "react-icons/ri";
 
+import { ColorSpace3D } from "@/components";
 import { Button } from "@/components/ui/Button";
 import {
   Dialog,
@@ -80,6 +81,7 @@ export function AboutDialog({ color, colorMode }: AboutDialogProps) {
             After all, time shouldn&apos;t just fly – it should{" "}
             <span style={{ color: color, fontWeight: 600 }}>glow</span>.
           </p>
+          <ColorSpace3D colorMode={colorMode} />
           <div className="flex flex-col items-center gap-4">
             <div className="flex gap-4 items-center justify-center mt-2">
               {SOCIAL_LINKS.map((link, index) => (
