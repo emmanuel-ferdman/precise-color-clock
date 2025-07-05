@@ -11,6 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/emmanuel-ferdman/precise-color-clock.git"
   },
+  "license": "MIT",
   "author": "Emmanuel Ferdman",
   "type": "module",
   "scripts": {
