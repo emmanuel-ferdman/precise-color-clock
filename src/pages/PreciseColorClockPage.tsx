@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { RiFullscreenLine, RiEyeLine, RiEyeOffLine } from "react-icons/ri";
 
@@ -10,6 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/DropdownMenu";
+import { LoadingScreen } from "@/components/ui/LoadingScreen";
 import { COLOR_MODES } from "@/config/color-modes";
 import { useColorClock } from "@/hooks/use-color-clock";
 import { useInactivityTimer } from "@/hooks/use-inactivity-timer";
@@ -19,11 +20,23 @@ import { isColorLight } from "@/utils/color-utils";
 
 function PreciseColorClockPage() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [showControls] = useInactivityTimer();
   const [showTime, setShowTime] = useState(true);
   const { time, color, colorMode, setColorMode } = useColorClock();
   const isLightBg = isColorLight(color);
 
+  useEffect(() => {
+    if (time) {
+      setLoading(false);
+    } else {
+      setLoading(true);
+    }
+  }, [time]);
+
+  if (loading) {
+    return <LoadingScreen />;
+  }
   return (
     <div
       className="min-h-screen flex flex-col items-center justify-center relative transition-colors duration-700"
@@ -78,7 +91,7 @@ function PreciseColorClockPage() {
           <RiFullscreenLine className="h-4 w-4" />
         </Button>
 
-        {/* About Dialog */}
+        {/* About dialog */}
         <AboutDialog color={color} colorMode={colorMode} />
       </div>
 
