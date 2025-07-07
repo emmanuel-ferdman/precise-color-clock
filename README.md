@@ -16,6 +16,7 @@
       <img src="assets/demo.gif" height="400px">
     </picture>
   </a>
+  <br/>
   <i>After all, time shouldn't just fly - it should glow ✨</i>
 </p>
 
