@@ -1,7 +1,7 @@
 <p align="center">
   <a href="https://precise-color-clock.vercel.app">
     <picture>
-      <img src="assets/logo-with-title.png" height="200px">
+      <img src="https://raw.githubusercontent.com/emmanuel-ferdman/precise-color-clock/main/assets/logo-with-title.png" alt="Precise Color Clock logo" height="200px">
     </picture>
   </a>
 </p>
@@ -13,10 +13,10 @@
 <p align="center">
   <a href="https://precise-color-clock.vercel.app">
     <picture>
-      <img src="assets/demo.gif" height="400px">
+      <img src="https://raw.githubusercontent.com/emmanuel-ferdman/precise-color-clock/main/assets/demo.gif" alt="Precise Color Clock demo" height="400px">
     </picture>
   </a>
-  <br/>
+  <br />
   <i>After all, time shouldn't just fly - it should glow ✨</i>
 </p>
 
