@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import { RiFullscreenLine, RiEyeLine, RiEyeOffLine } from "react-icons/ri";
 
@@ -20,19 +20,13 @@ import { isColorLight } from "@/utils/color-utils";
 
 function PreciseColorClockPage() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [loading, setLoading] = useState(true);
   const [showControls] = useInactivityTimer();
   const [showTime, setShowTime] = useState(true);
   const { time, color, colorMode, setColorMode } = useColorClock();
   const isLightBg = isColorLight(color);
 
-  useEffect(() => {
-    if (time) {
-      setLoading(false);
-    } else {
-      setLoading(true);
-    }
-  }, [time]);
+  // Derive loading state directly from time
+  const loading = !time;
 
   if (loading) {
     return <LoadingScreen />;
