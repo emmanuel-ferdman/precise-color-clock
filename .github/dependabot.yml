@@ -4,3 +4,44 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    groups:
+      eslint:
+        patterns:
+          - "@eslint/*"
+          - "eslint"
+          - "eslint-*"
+      prettier:
+        patterns:
+          - "*-prettier-*"
+          - "prettier"
+          - "prettier-*"
+      radix-ui:
+        patterns:
+          - "@radix-ui/*"
+      react:
+        patterns:
+          - "@types/react"
+          - "@types/react-dom"
+          - "react"
+          - "react-dom"
+          - "react-icons"
+      tailwindcss:
+        patterns:
+          - "@tailwindcss/*"
+          - "tailwind-merge"
+          - "tailwindcss"
+          - "tailwindcss-*"
+      three:
+        patterns:
+          - "@types/three"
+          - "three"
+      typescript:
+        patterns:
+          - "@typescript-eslint/*"
+          - "typescript"
+          - "typescript-eslint"
+      vite:
+        patterns:
+          - "@vitejs/*"
+          - "vite"
+          - "vite-*"
