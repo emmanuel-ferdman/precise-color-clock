@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 /**
  * Tracks user inactivity based on mouse movement and clicks.
@@ -8,32 +8,35 @@ import { useState, useEffect } from "react";
  */
 export function useInactivityTimer(timeout = 2000) {
   const [isActive, setIsActive] = useState(true);
-  const [lastInteraction, setLastInteraction] = useState(Date.now());
+  const lastInteractionRef = useRef<number | null>(null);
 
   useEffect(() => {
+    // Initialize on mount (inside effect to avoid impure render)
+    lastInteractionRef.current = Date.now();
+
     const handleInteraction = () => {
       setIsActive(true);
-      setLastInteraction(Date.now());
+      lastInteractionRef.current = Date.now();
     };
+
+    const timer = setInterval(() => {
+      if (
+        lastInteractionRef.current !== null &&
+        Date.now() - lastInteractionRef.current > timeout
+      ) {
+        setIsActive(false);
+      }
+    }, 1000);
 
     window.addEventListener("mousemove", handleInteraction);
     window.addEventListener("click", handleInteraction);
 
     return () => {
+      clearInterval(timer);
       window.removeEventListener("mousemove", handleInteraction);
       window.removeEventListener("click", handleInteraction);
     };
-  }, []);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      if (Date.now() - lastInteraction > timeout) {
-        setIsActive(false);
-      }
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [lastInteraction, timeout]);
+  }, [timeout]);
 
   return [isActive, setIsActive] as const;
 }
