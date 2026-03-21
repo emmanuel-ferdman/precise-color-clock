@@ -24,14 +24,20 @@ export default defineConfig(() => ({
     },
   },
   build: {
-    rollupOptions: {
+    rolldownOptions: {
       output: {
-        manualChunks: {
-          vendor: ["react", "react-dom"],
-          three: ["three"],
-          icons: ["react-icons"],
-          ui: ["@radix-ui/react-dialog", "@radix-ui/react-dropdown-menu", "@radix-ui/react-slot"],
-          utils: ["culori", "clsx", "tailwind-merge"],
+        codeSplitting: {
+          groups: [
+            { name: "vendor", test: /node_modules[\\/]react(-dom)?[\\/]/, priority: 20 },
+            { name: "three", test: /node_modules[\\/]three[\\/]/, priority: 15 },
+            { name: "icons", test: /node_modules[\\/]react-icons[\\/]/, priority: 15 },
+            { name: "ui", test: /node_modules[\\/]@radix-ui[\\/]/, priority: 15 },
+            {
+              name: "utils",
+              test: /node_modules[\\/](culori|clsx|tailwind-merge)[\\/]/,
+              priority: 15,
+            },
+          ],
         },
       },
     },
