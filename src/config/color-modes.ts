@@ -1,4 +1,4 @@
-import { ColorMode, ColorFormat } from "@/types/color";
+import type { ColorMode, ColorFormat } from "@/types/color";
 
 export const COLOR_MODES: Record<ColorMode, ColorFormat> = {
   hex: {

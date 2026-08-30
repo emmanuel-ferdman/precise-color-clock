@@ -1,6 +1,5 @@
 import { RiHeartFill, RiInformationLine, RiShareLine } from "react-icons/ri";
 
-import { ColorSpace3D } from "@/components";
 import { Button } from "@/components/ui/Button";
 import {
   Dialog,
@@ -10,6 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/Dialog";
+import { ColorSpace3D } from "@/components/visualizations/ColorSpace3D";
 import { GITHUB_PROFILE_URL } from "@/config/constants";
 import {
   SOCIAL_SHARE_URL,
@@ -17,8 +17,8 @@ import {
   SOCIAL_SHARE_TITLE,
   SOCIAL_LINKS,
 } from "@/config/social";
-import { ColorMode } from "@/types/color";
-import { SocialLinkProps } from "@/types/social";
+import type { ColorMode } from "@/types/color";
+import type { SocialLinkProps } from "@/types/social";
 
 function SocialLink({
   href,
@@ -84,8 +84,8 @@ export function AboutDialog({ color, colorMode }: AboutDialogProps) {
           <ColorSpace3D colorMode={colorMode} />
           <div className="flex flex-col items-center gap-4">
             <div className="flex gap-4 items-center justify-center mt-2">
-              {SOCIAL_LINKS.map((link, index) => (
-                <SocialLink key={index} {...link} />
+              {SOCIAL_LINKS.map((link) => (
+                <SocialLink key={link.label} {...link} />
               ))}
               <button
                 type="button"

@@ -4,9 +4,9 @@ import * as React from "react";
 
 import { cn } from "@/utils/cn-utils";
 
-import { buttonVariants, VariantProps } from "./button-variants";
+import { buttonVariants, type VariantProps } from "./button-variants";
 
-export interface ButtonProps
+interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }

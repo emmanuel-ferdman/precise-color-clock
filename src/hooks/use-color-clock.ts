@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 import { COLOR_MODES } from "@/config/color-modes";
-import { ColorMode } from "@/types/color";
+import type { ColorMode } from "@/types/color";
 
 /**
  * Provides the current time and its color representation in a selected color mode.
