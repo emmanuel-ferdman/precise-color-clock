@@ -1,4 +1,4 @@
-import { RiInformationLine, RiShareLine } from "react-icons/ri";
+import { RiHeartFill, RiInformationLine, RiShareLine } from "react-icons/ri";
 
 import { ColorSpace3D } from "@/components";
 import { Button } from "@/components/ui/Button";
@@ -98,7 +98,12 @@ export function AboutDialog({ color, colorMode }: AboutDialogProps) {
               </button>
             </div>
             <p className="text-sm text-center text-muted-foreground mt-4">
-              Created with <span className="text-pink-500">❤️</span> by{" "}
+              Created with{" "}
+              <RiHeartFill
+                aria-label="love"
+                className="inline-block align-text-bottom text-pink-500"
+              />{" "}
+              by{" "}
               <a
                 href={GITHUB_PROFILE_URL}
                 target="_blank"
