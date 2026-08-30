@@ -2,7 +2,22 @@ import { parse, converter } from "culori";
 
 import { COLOR_MODES } from "@/config/color-modes";
 import { COLOR_BRIGHTNESS_THRESHOLD } from "@/config/constants";
-import { ColorMode } from "@/types/color";
+import type { ColorMode } from "@/types/color";
+
+/**
+ * Iterates over all 86,400 time points in a day (HH:MM:SS).
+ *
+ * @param callback - Called with (hours, minutes, seconds) for each time point.
+ */
+export function forEachTimePoint(callback: (h: number, m: number, s: number) => void): void {
+  for (let h = 0; h < 24; h++) {
+    for (let m = 0; m < 60; m++) {
+      for (let s = 0; s < 60; s++) {
+        callback(h, m, s);
+      }
+    }
+  }
+}
 
 /**
  * Convert all time points (HH:MM:SS) to RGB values based on the specified color mode.
@@ -15,30 +30,25 @@ export function getTimeColorsAsRgbArray(mode: ColorMode): number[] {
   if (!modeConfig) return [];
 
   const toRgb = converter("rgb");
-  const rgbArray = [];
+  const rgbArray: number[] = [];
 
-  for (let h = 0; h < 24; h++) {
-    for (let m = 0; m < 60; m++) {
-      for (let s = 0; s < 60; s++) {
-        const colorStr = modeConfig.format([h, m, s]);
-        const parsed = parse(colorStr || "#000");
-        const rgb = toRgb(parsed);
-        if (rgb) {
-          rgbArray.push(rgb.r, rgb.g, rgb.b);
-        } else {
-          console.warn(`Failed to parse color: ${colorStr}`);
-          rgbArray.push(0, 0, 0); // fallback to black
-        }
-      }
+  forEachTimePoint((h, m, s) => {
+    const colorStr = modeConfig.format([h, m, s]);
+    const parsed = parse(colorStr || "#000");
+    const rgb = toRgb(parsed);
+    if (rgb) {
+      rgbArray.push(rgb.r, rgb.g, rgb.b);
+    } else {
+      console.warn(`Failed to parse color: ${colorStr}`);
+      rgbArray.push(0, 0, 0);
     }
-  }
+  });
 
   return rgbArray;
 }
 
 /**
- * Determine if a color is light based on its brightness.
- * This function uses the HSV (Hue, Saturation, Value) model to assess brightness.
+ * Determine if a color is light based on its HSV brightness.
  *
  * @param color - The color string to check (hex, rgb, hsl, etc.).
  * @returns True if the color is light, false otherwise.
