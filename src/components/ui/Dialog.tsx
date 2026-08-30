@@ -23,8 +23,6 @@ const DialogTrigger = React.forwardRef<
 DialogTrigger.displayName = DialogPrimitive.Trigger.displayName;
 
 const DialogPortal = DialogPrimitive.Portal;
-const DialogClose = DialogPrimitive.Close;
-
 const DialogOverlay = React.forwardRef<
   React.ComponentRef<typeof DialogPrimitive.Overlay>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay> & {
@@ -77,15 +75,6 @@ function DialogHeader({ className, ...props }: React.HTMLAttributes<HTMLDivEleme
   );
 }
 
-function DialogFooter({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
-  return (
-    <div
-      className={cn("flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2", className)}
-      {...props}
-    />
-  );
-}
-
 const DialogTitle = React.forwardRef<
   React.ComponentRef<typeof DialogPrimitive.Title>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title> & {
@@ -123,15 +112,4 @@ const DialogDescription = React.forwardRef<
 
 DialogDescription.displayName = DialogPrimitive.Description.displayName;
 
-export {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogOverlay,
-  DialogPortal,
-  DialogTitle,
-  DialogTrigger,
-};
+export { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger };

@@ -3,7 +3,7 @@
  *
  * @returns True if in fullscreen mode, false otherwise.
  */
-export const isFullscreen = (): boolean => {
+const isFullscreen = (): boolean => {
   return !!document.fullscreenElement;
 };
 
