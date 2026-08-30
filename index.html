@@ -5,8 +5,8 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YPXJ53DZV3"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
+      function gtag(...args) {
+        dataLayer.push(args);
       }
       gtag("js", new Date());
 
@@ -58,7 +58,7 @@
   </head>
 
   <body>
-    <div id="root" aria-label="Precise Color Clock Application"></div>
+    <div id="root"></div>
     <noscript>
       <div style="text-align: center; padding: 50px; font-family: system-ui, sans-serif">
         <h1>Precise Color Clock</h1>
