@@ -9,11 +9,14 @@ import {
 
 import { GITHUB_REPOSITORY_URL } from "./constants";
 
-// Social configuration constants
 export const SOCIAL_SHARE_URL = typeof window !== "undefined" ? window.location.href : "";
 export const SOCIAL_SHARE_TITLE = "Precise Color Clock";
 export const SOCIAL_SHARE_TEXT =
   "Check out Precise Color Clock - a beautiful way to visualize time!";
+
+function shareHref(base: string, params: Record<string, string>): string {
+  return `${base}?${new URLSearchParams(params)}`;
+}
 
 export const SOCIAL_LINKS = [
   {
@@ -25,7 +28,7 @@ export const SOCIAL_LINKS = [
     hoverColorClass: "hover:text-gray-600",
   },
   {
-    href: `https://www.facebook.com/sharer/sharer.php?u=${SOCIAL_SHARE_URL}`,
+    href: shareHref("https://www.facebook.com/sharer/sharer.php", { u: SOCIAL_SHARE_URL }),
     icon: RiFacebookCircleLine,
     label: "Share on Facebook",
     title: "Share on Facebook",
@@ -33,7 +36,7 @@ export const SOCIAL_LINKS = [
     hoverColorClass: "hover:text-blue-600",
   },
   {
-    href: `https://www.linkedin.com/sharing/share-offsite/?url=${SOCIAL_SHARE_URL}`,
+    href: shareHref("https://www.linkedin.com/sharing/share-offsite/", { url: SOCIAL_SHARE_URL }),
     icon: RiLinkedinLine,
     label: "Share on LinkedIn",
     title: "Share on LinkedIn",
@@ -41,7 +44,10 @@ export const SOCIAL_LINKS = [
     hoverColorClass: "hover:text-blue-600",
   },
   {
-    href: `https://www.reddit.com/submit?url=${SOCIAL_SHARE_URL}&title=${SOCIAL_SHARE_TEXT}`,
+    href: shareHref("https://www.reddit.com/submit", {
+      url: SOCIAL_SHARE_URL,
+      title: SOCIAL_SHARE_TEXT,
+    }),
     icon: RiRedditLine,
     label: "Share on Reddit",
     title: "Share on Reddit",
@@ -49,7 +55,7 @@ export const SOCIAL_LINKS = [
     hoverColorClass: "hover:text-orange-600",
   },
   {
-    href: `https://wa.me/?text=${SOCIAL_SHARE_TEXT} ${SOCIAL_SHARE_URL}`,
+    href: shareHref("https://wa.me/", { text: `${SOCIAL_SHARE_TEXT} ${SOCIAL_SHARE_URL}` }),
     icon: RiWhatsappLine,
     label: "Share on WhatsApp",
     title: "Share on WhatsApp",
@@ -57,7 +63,10 @@ export const SOCIAL_LINKS = [
     hoverColorClass: "hover:text-green-600",
   },
   {
-    href: `https://x.com/intent/tweet?url=${SOCIAL_SHARE_URL}&text=${SOCIAL_SHARE_TEXT}`,
+    href: shareHref("https://x.com/intent/tweet", {
+      url: SOCIAL_SHARE_URL,
+      text: SOCIAL_SHARE_TEXT,
+    }),
     icon: RiTwitterXFill,
     label: "Share on X",
     title: "Share on X",
