@@ -43,5 +43,11 @@ export default tseslint.config(
       "react/require-default-props": "off",
       "react/react-in-jsx-scope": "off",
     },
+  },
+  {
+    files: ["src/components/ui/*.tsx"],
+    rules: {
+      "react-refresh/only-export-components": "off",
+    },
   }
 );

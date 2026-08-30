@@ -29,7 +29,3 @@
     @apply bg-background text-foreground antialiased transition-colors duration-1000;
   }
 }
-
-.clock-text {
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
