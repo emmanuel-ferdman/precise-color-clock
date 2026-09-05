@@ -64,7 +64,7 @@ function pointIndexToTimeString(index: number): string {
   return `${h.toString().padStart(2, "0")}:${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
 }
 
-export interface ColorSpace3DProps {
+interface ColorSpace3DProps {
   colorMode: ColorMode;
 }
 
